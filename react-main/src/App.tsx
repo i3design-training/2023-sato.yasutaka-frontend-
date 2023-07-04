@@ -1,33 +1,40 @@
 import { useState } from 'react';
 import './App.css';
-import reactLogo from './assets/react.svg';
+// import reactLogo from './assets/react.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Login } from './User/Login';
+import { Register } from './User/Register';
+import { Logout } from './User/Logout';
+import { CreateTasks } from './Task/CreateTask';
+import { Username } from './User/Username';
+import { Top } from './Top';
+import { Tasks } from './Task/Task';
+import { Categories } from './Categories/Categories';
+import { CreateCategories } from './Categories/CreateCategories';
 
 function App() {
-  const [count, setCount] = useState(0);
+  console.log('test');
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/top" element={<Top />} />
+          <Route path="/users/register" element={<Register />} />
+          <Route path="/users/login" element={<Login />} />
+          <Route path="/users/logout" element={<Logout />} />
+          <Route path="/users/username" element={<Username />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/tasks/createTasks" element={<CreateTasks />} />
+          <Route
+            path="/categories/createCategories"
+            element={<CreateCategories />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
