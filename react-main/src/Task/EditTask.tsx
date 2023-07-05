@@ -17,7 +17,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-export const CreateTask = () => {
+export const EditTask = () => {
   //タイトル
   const Title = {
     display: 'flex',
@@ -99,6 +99,24 @@ export const CreateTask = () => {
     },
   };
 
+  //削除ボタン
+  const DeleteButton = {
+    display: 'flex',
+    width: '188px',
+    height: '51px',
+    backgroundColor: '#DC143C',
+    fontWeight: '700',
+    color: 'white',
+    margin: '0 auto',
+    marginTop: '32px',
+    '&:hover': {
+      backgroundColor: 'red',
+    },
+    '&:active': {
+      backgroundColor: 'red',
+    },
+  };
+
   //カテゴリプルダウン
   const [categories, setCategories] = React.useState('');
   const handleChange = (event: SelectChangeEvent) => {
@@ -110,7 +128,7 @@ export const CreateTask = () => {
       <Header />
       <Container maxWidth="sm">
         <Grid container>
-          <Box sx={Title}>タスク作成</Box>
+          <Box sx={Title}>編集</Box>
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
               <Box sx={TitleSet}>
@@ -195,6 +213,10 @@ export const CreateTask = () => {
 
           <Button type="submit" sx={SaveButton}>
             保存
+          </Button>
+
+          <Button type="submit" sx={DeleteButton}>
+            削除
           </Button>
         </Grid>
       </Container>

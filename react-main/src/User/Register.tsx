@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Box, Button, Container, Grid, TextField } from '@mui/material';
+import { Header } from '../components/Header';
 
 export const Register = () => {
   //タイトル
@@ -61,15 +60,22 @@ export const Register = () => {
     display: 'flex',
     width: '188px',
     height: '51px',
-    backgroundColor: 'black',
+    backgroundColor: '#808080',
     fontWeight: '700',
     color: 'white',
     margin: '0 auto',
     marginTop: '32px',
+    '&:hover': {
+      backgroundColor: 'black',
+    },
+    '&:active': {
+      backgroundColor: 'black',
+    },
   };
 
   return (
     <>
+      <Header />
       <Container maxWidth="sm">
         <Grid container>
           <Box sx={Title}>新規会員登録</Box>
@@ -87,7 +93,7 @@ export const Register = () => {
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
               <Box sx={TitleSet}>
-                <Box sx={List}>メールアドレス</Box>
+                <Box sx={List}>パスワード</Box>
                 <Box sx={Required}>必須</Box>
               </Box>
             </Box>

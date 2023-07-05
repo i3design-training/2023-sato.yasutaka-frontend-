@@ -1,7 +1,7 @@
-import { Box, Button, Container, Grid, TextField } from '@mui/material';
+import { Box, Button, Container, Grid, Link, TextField } from '@mui/material';
 import { Header } from '../components/Header';
 
-export const Login = () => {
+export const Profile = () => {
   //タイトル
   const Title = {
     display: 'flex',
@@ -46,7 +46,7 @@ export const Login = () => {
   };
 
   //メールフォームレイアウト
-  const MailFormLayout = {
+  const FormLayout = {
     display: 'flex',
     justifyContent: 'center',
     width: '355px',
@@ -55,8 +55,8 @@ export const Login = () => {
     borderRadius: '5px',
   };
 
-  //登録ボタン
-  const RegisterButton = {
+  //保存ボタン
+  const SaveButton = {
     display: 'flex',
     width: '188px',
     height: '51px',
@@ -73,12 +73,26 @@ export const Login = () => {
     },
   };
 
+  
+
   return (
     <>
       <Header />
+
       <Container maxWidth="sm">
         <Grid container>
-          <Box sx={Title}>ログイン</Box>
+          <Box sx={Title}>プロフィール編集</Box>
+          <Grid xs={4} item sx={TitleSet}>
+            <Box sx={formFieldSet}>
+              <Box sx={TitleSet}>
+                <Box sx={List}>名前</Box>
+                <Box sx={Required}>必須</Box>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid xs={8} item>
+            <TextField sx={FormLayout} placeholder="左藤泰隆" />
+          </Grid>
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
               <Box sx={TitleSet}>
@@ -87,8 +101,8 @@ export const Login = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="xxx@i3design.co.jp" />
+          <Grid xs={8} item>
+            <TextField sx={FormLayout} placeholder="abc@i3design.co.jp" />
           </Grid>
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
@@ -98,11 +112,45 @@ export const Login = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="パスワードを入力" />
+          <Grid xs={8} item>
+            <TextField sx={FormLayout} placeholder="半角英数字8~20文字以内" />
           </Grid>
-          <Button type="submit" sx={RegisterButton}>
-            ログイン
+          {/* <Grid xs={4} item sx={TitleSet}>
+            <Box sx={formFieldSet}>
+              <Box sx={TitleSet}>
+                <Box sx={List}>プロフィール画像</Box>
+                <Box sx={Required}>必須</Box>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid xs={8} item>
+            <Box sx={{ height: '192px' }}>
+              <Box
+                component="img"
+                // src={profilePicture}
+                alt="Success"
+                sx={{ margin: '0 auto', marginLeft: '15px' }}
+              />
+              <Box
+                sx={{ marginTop: '24px', marginLeft: '15px', color: '#1976d2' }}
+              >
+                <Box>
+                  <Box sx={{ marginLeft: '18px' }}>
+                    <input
+                      id="file-upload"
+                      name="profile_picture"
+                      type="file"
+                      accept="image/*"
+                      // onChange={onChangeFile}
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </Grid> */}
+
+          <Button type="submit" sx={SaveButton}>
+            保存
           </Button>
         </Grid>
       </Container>

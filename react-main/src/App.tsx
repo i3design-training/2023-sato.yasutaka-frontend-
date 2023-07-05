@@ -1,16 +1,16 @@
-import { useState } from 'react';
 import './App.css';
-// import reactLogo from './assets/react.svg';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Login } from './User/Login';
 import { Register } from './User/Register';
 import { Logout } from './User/Logout';
-import { CreateTasks } from './Task/CreateTask';
-import { Username } from './User/Username';
 import { Top } from './Top';
 import { Tasks } from './Task/Task';
 import { Categories } from './Categories/Categories';
-import { CreateCategories } from './Categories/CreateCategories';
+import { CreateTask } from './Task/CreateTask';
+import { CreateCategory } from './Categories/CreateCategory';
+import { Profile } from './User/Profile';
+import { DetailTask } from './Task/DetailTask';
+import { EditTask } from './Task/EditTask';
 
 function App() {
   console.log('test');
@@ -24,14 +24,13 @@ function App() {
           <Route path="/users/register" element={<Register />} />
           <Route path="/users/login" element={<Login />} />
           <Route path="/users/logout" element={<Logout />} />
-          <Route path="/users/username" element={<Username />} />
+          <Route path="/users/profile" element={<Profile />} />
           <Route path="/tasks" element={<Tasks />} />
+          <Route path="/tasks/create" element={<CreateTask />} />
+          <Route path="/tasks/edit" element={<EditTask />} />
+          <Route path="/tasks/detail" element={<DetailTask />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/tasks/createTasks" element={<CreateTasks />} />
-          <Route
-            path="/categories/createCategories"
-            element={<CreateCategories />}
-          />
+          <Route path="/categories/create" element={<CreateCategory />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,7 +1,8 @@
-import { Box, Button, Container, Grid, TextField } from '@mui/material';
+import { Box, Button, Container, Grid, SelectChangeEvent } from '@mui/material';
 import { Header } from '../components/Header';
+import React from 'react';
 
-export const Login = () => {
+export const DetailTask = () => {
   //タイトル
   const Title = {
     display: 'flex',
@@ -45,18 +46,8 @@ export const Login = () => {
     marginLeft: '8px',
   };
 
-  //メールフォームレイアウト
-  const MailFormLayout = {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '355px',
-    height: '48px',
-    padding: '12px 16px',
-    borderRadius: '5px',
-  };
-
-  //登録ボタン
-  const RegisterButton = {
+  //保存ボタン
+  const SaveButton = {
     display: 'flex',
     width: '188px',
     height: '51px',
@@ -73,36 +64,59 @@ export const Login = () => {
     },
   };
 
+  //カテゴリプルダウン
+  const [categories, setCategories] = React.useState('');
+
   return (
     <>
       <Header />
       <Container maxWidth="sm">
         <Grid container>
-          <Box sx={Title}>ログイン</Box>
+          <Box sx={Title}>詳細</Box>
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
               <Box sx={TitleSet}>
-                <Box sx={List}>メールアドレス</Box>
+                <Box sx={List}>タスク</Box>
                 <Box sx={Required}>必須</Box>
               </Box>
             </Box>
           </Grid>
           <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="xxx@i3design.co.jp" />
+            <Box>演習</Box>
           </Grid>
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
               <Box sx={TitleSet}>
-                <Box sx={List}>パスワード</Box>
-                <Box sx={Required}>必須</Box>
+                <Box sx={List}>カテゴリ</Box>
               </Box>
             </Box>
           </Grid>
           <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="パスワードを入力" />
+            <Box>ビジネス</Box>
           </Grid>
-          <Button type="submit" sx={RegisterButton}>
-            ログイン
+          <Grid xs={4} item sx={TitleSet}>
+            <Box sx={formFieldSet}>
+              <Box sx={TitleSet}>
+                <Box sx={List}>期日</Box>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid xs={8}>
+            <Box>2023/07/15</Box>
+          </Grid>
+          <Grid xs={4} item sx={TitleSet}>
+            <Box sx={formFieldSet}>
+              <Box sx={TitleSet}>
+                <Box sx={List}>タスク詳細</Box>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid xs={8}>
+            <Box>todo課題を作り終える!!!!!!!!!</Box>
+          </Grid>
+
+          <Button type="submit" sx={SaveButton}>
+            タスク完了
           </Button>
         </Grid>
       </Container>
