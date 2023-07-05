@@ -1,7 +1,7 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import { Header } from '../components/Header';
 
-export const Login = () => {
+export const CreateCategory = () => {
   //タイトル
   const Title = {
     display: 'flex',
@@ -46,7 +46,7 @@ export const Login = () => {
   };
 
   //メールフォームレイアウト
-  const MailFormLayout = {
+  const FormLayout = {
     display: 'flex',
     justifyContent: 'center',
     width: '355px',
@@ -55,8 +55,8 @@ export const Login = () => {
     borderRadius: '5px',
   };
 
-  //登録ボタン
-  const RegisterButton = {
+  //保存ボタン
+  const SaveButton = {
     display: 'flex',
     width: '188px',
     height: '51px',
@@ -78,31 +78,20 @@ export const Login = () => {
       <Header />
       <Container maxWidth="sm">
         <Grid container>
-          <Box sx={Title}>ログイン</Box>
+          <Box sx={Title}>カテゴリを作成する</Box>
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
               <Box sx={TitleSet}>
-                <Box sx={List}>メールアドレス</Box>
+                <Box sx={List}>カテゴリ</Box>
                 <Box sx={Required}>必須</Box>
               </Box>
             </Box>
           </Grid>
           <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="xxx@i3design.co.jp" />
+            <TextField sx={FormLayout} placeholder="プライベート、仕事など" />
           </Grid>
-          <Grid xs={4} item sx={TitleSet}>
-            <Box sx={formFieldSet}>
-              <Box sx={TitleSet}>
-                <Box sx={List}>パスワード</Box>
-                <Box sx={Required}>必須</Box>
-              </Box>
-            </Box>
-          </Grid>
-          <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="パスワードを入力" />
-          </Grid>
-          <Button type="submit" sx={RegisterButton}>
-            ログイン
+          <Button type="submit" sx={SaveButton}>
+            保存
           </Button>
         </Grid>
       </Container>
