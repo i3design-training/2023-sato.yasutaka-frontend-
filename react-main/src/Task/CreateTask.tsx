@@ -16,6 +16,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateTask = () => {
   //タイトル
@@ -99,12 +100,19 @@ export const CreateTask = () => {
     },
   };
 
+  //ここから下は関数処理
+  const navigate = useNavigate();
+
   //カテゴリプルダウン
   const [categories, setCategories] = React.useState('');
   const handleChange = (event: SelectChangeEvent) => {
     setCategories(event.target.value as string);
   };
 
+  //タスク作成
+  const saveTask = () => {
+    navigate('/tasks');
+  };
   return (
     <>
       <Header />
@@ -193,7 +201,7 @@ export const CreateTask = () => {
             />
           </Grid>
 
-          <Button type="submit" sx={SaveButton}>
+          <Button type="submit" sx={SaveButton} onClick={saveTask}>
             保存
           </Button>
         </Grid>

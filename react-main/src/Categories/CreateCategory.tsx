@@ -1,5 +1,6 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import { Header } from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateCategory = () => {
   //タイトル
@@ -73,6 +74,14 @@ export const CreateCategory = () => {
     },
   };
 
+  //ここから下は関数処理
+  const navigate = useNavigate();
+
+  //削除クリック
+  const saveCategory = () => {
+    navigate('/categories');
+  };
+
   return (
     <>
       <Header />
@@ -90,7 +99,7 @@ export const CreateCategory = () => {
           <Grid xs={8}>
             <TextField sx={FormLayout} placeholder="プライベート、仕事など" />
           </Grid>
-          <Button type="submit" sx={SaveButton}>
+          <Button type="submit" sx={SaveButton} onClick={saveCategory}>
             保存
           </Button>
         </Grid>

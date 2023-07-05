@@ -1,6 +1,7 @@
 import { Box, Button, Container, Grid, SelectChangeEvent } from '@mui/material';
 import { Header } from '../components/Header';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const DetailTask = () => {
   //タイトル
@@ -64,8 +65,12 @@ export const DetailTask = () => {
     },
   };
 
-  //カテゴリプルダウン
-  const [categories, setCategories] = React.useState('');
+  //ここから下は関数処理
+  const navigate = useNavigate();
+  //タスク削除
+  const deletTask = () => {
+    navigate('/tasks');
+  };
 
   return (
     <>
@@ -115,7 +120,7 @@ export const DetailTask = () => {
             <Box>todo課題を作り終える!!!!!!!!!</Box>
           </Grid>
 
-          <Button type="submit" sx={SaveButton}>
+          <Button type="submit" sx={SaveButton} onClick={deletTask}>
             タスク完了
           </Button>
         </Grid>
