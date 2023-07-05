@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid } from '@mui/material';
 import { Header } from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 
-export const Categories = () => {
+export const Tasks = () => {
   //タスク
   const TaskList = {
     margin: '24px 12px',
@@ -53,14 +53,19 @@ export const Categories = () => {
   //ここから下は関数処理
   const navigate = useNavigate();
 
-  //削除クリック
-  const deletCategory = () => {
-    alert('消しますか？');
+  //詳細クリック
+  const toDetail = () => {
+    navigate('/tasks/detail');
   };
-  //カテゴリ作成クリック
+  //編集クリック
+  const toEdit = () => {
+    navigate('/tasks/edit');
+  };
+  //タスク
   const toCreate = () => {
-    navigate('/categories/create');
+    navigate('/tasks/create');
   };
+
   return (
     <>
       <Header />
@@ -71,10 +76,15 @@ export const Categories = () => {
               <Grid xs={8} key={index}>
                 <Box sx={{ margin: '24px 12px' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box sx={TaskList}>・カテゴリ名</Box>
+                    <Box sx={TaskList}>・タスク名</Box>
                     <Box>
-                      <Button sx={DetailTask} onClick={deletCategory}>
-                        削除
+                      <Button sx={DetailTask} onClick={toDetail}>
+                        詳細
+                      </Button>
+                    </Box>
+                    <Box>
+                      <Button sx={EditTask} onClick={toEdit}>
+                        編集
                       </Button>
                     </Box>
                   </Box>
@@ -84,7 +94,7 @@ export const Categories = () => {
           </Grid>
           <Grid xs={4}>
             <Button type="submit" sx={CreateTask} onClick={toCreate}>
-              カテゴリ新規作成
+              タスク新規作成
             </Button>
           </Grid>
         </Grid>

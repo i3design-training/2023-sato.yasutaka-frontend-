@@ -1,5 +1,6 @@
 import { Box, Button, Container, Grid, Link, TextField } from '@mui/material';
 import { Header } from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 export const Profile = () => {
   //タイトル
@@ -73,7 +74,13 @@ export const Profile = () => {
     },
   };
 
-  
+  //ここから下は関数処理
+  const navigate = useNavigate();
+
+  //詳細クリック
+  const saveProfile = () => {
+    navigate('/top');
+  };
 
   return (
     <>
@@ -149,7 +156,7 @@ export const Profile = () => {
             </Box>
           </Grid> */}
 
-          <Button type="submit" sx={SaveButton}>
+          <Button type="submit" sx={SaveButton} onClick={saveProfile}>
             保存
           </Button>
         </Grid>

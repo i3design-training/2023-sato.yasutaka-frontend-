@@ -4,7 +4,7 @@ import { Login } from './User/Login';
 import { Register } from './User/Register';
 import { Logout } from './User/Logout';
 import { Top } from './Top';
-import { Tasks } from './Task/Task';
+import { Tasks } from './Task/Tasks';
 import { Categories } from './Categories/Categories';
 import { CreateTask } from './Task/CreateTask';
 import { CreateCategory } from './Categories/CreateCategory';
