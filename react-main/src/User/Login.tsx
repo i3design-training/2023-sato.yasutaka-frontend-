@@ -1,5 +1,8 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import { Header } from '../components/Header';
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   //タイトル
@@ -73,6 +76,34 @@ export const Login = () => {
     },
   };
 
+  //ここから下は関数処理
+  const [email, setEmail] = useState(''); // メールアドレスの状態管理
+  const [password, setPassword] = useState(''); // パスワードの状態管理
+  const navigate = useNavigate();
+  const handleLogin = async () => {
+    console.log(email, password); // デバッグ
+    try {
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/users/login',
+        {
+          email,
+          password,
+        },
+      );
+        // トークンの取得
+        const token = response.data.token;
+        console.log(token);
+        // トークンをローカルストレージに保存
+        localStorage.setItem('token', token);
+      // ログイン成功時の処理
+      // トークンの保存やリダイレクトなどの処理を行う
+      navigate('/top');
+    } catch (error) {
+      console.error(error);
+      alert('ログインできません。');
+    }
+  };
+
   return (
     <>
       <Header />
@@ -88,7 +119,12 @@ export const Login = () => {
             </Box>
           </Grid>
           <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="xxx@i3design.co.jp" />
+            <TextField
+              sx={MailFormLayout}
+              placeholder="xxx@i3design.co.jp"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </Grid>
           <Grid xs={4} item sx={TitleSet}>
             <Box sx={formFieldSet}>
@@ -99,9 +135,14 @@ export const Login = () => {
             </Box>
           </Grid>
           <Grid xs={8}>
-            <TextField sx={MailFormLayout} placeholder="パスワードを入力" />
+            <TextField
+              sx={MailFormLayout}
+              placeholder="パスワードを入力"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </Grid>
-          <Button type="submit" sx={RegisterButton}>
+          <Button type="submit" sx={RegisterButton} onClick={handleLogin}>
             ログイン
           </Button>
         </Grid>

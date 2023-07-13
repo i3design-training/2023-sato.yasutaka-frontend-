@@ -14,8 +14,6 @@ import { EditTask } from './Task/EditTask';
 import { Complete } from './User/Complete';
 
 function App() {
-  console.log('test');
-
   return (
     <>
       <BrowserRouter>
