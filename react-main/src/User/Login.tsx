@@ -90,13 +90,11 @@ export const Login = () => {
           password,
         },
       );
-        // トークンの取得
-        const token = response.data.token;
-        console.log(token);
-        // トークンをローカルストレージに保存
-        localStorage.setItem('token', token);
-      // ログイン成功時の処理
-      // トークンの保存やリダイレクトなどの処理を行う
+      // トークンの取得
+      const token = response.data.token;
+      console.log(token);
+      // トークンをローカルストレージに保存
+      localStorage.setItem('token', token);
       navigate('/top');
     } catch (error) {
       console.error(error);
