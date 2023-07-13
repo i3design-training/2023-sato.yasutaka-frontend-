@@ -11,6 +11,7 @@ import { CreateCategory } from './Categories/CreateCategory';
 import { Profile } from './User/Profile';
 import { DetailTask } from './Task/DetailTask';
 import { EditTask } from './Task/EditTask';
+import { Complete } from './User/Complete';
 
 function App() {
   console.log('test');
@@ -23,6 +24,7 @@ function App() {
           <Route path="/top" element={<Top />} />
           <Route path="/users/register" element={<Register />} />
           <Route path="/users/login" element={<Login />} />
+          <Route path="/users/complete/verify" element={<Complete />} />
           <Route path="/users/logout" element={<Logout />} />
           <Route path="/users/profile" element={<Profile />} />
           <Route path="/tasks" element={<Tasks />} />
