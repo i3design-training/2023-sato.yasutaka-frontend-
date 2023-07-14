@@ -1,6 +1,9 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import { Header } from '../components/Header';
+
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 
 export const CreateCategory = () => {
   //タイトル
@@ -76,12 +79,23 @@ export const CreateCategory = () => {
 
   //ここから下は関数処理
   const navigate = useNavigate();
+  const [name, setName] = useState('');
 
-  //削除クリック
-  const saveCategory = () => {
-    navigate('/categories');
+  const saveCategory = async () => {
+    console.log(name); // デバッグ
+    try {
+      await axios.post(
+        'http://127.0.0.1:8000/api/categories/create',
+        {
+          name,
+        },
+      );
+      navigate('/categories');
+    } catch (error) {
+      console.error(error);
+      alert('カテゴリー登録ができませんでした。');
+    }
   };
-
   return (
     <>
       <Header />
@@ -97,7 +111,12 @@ export const CreateCategory = () => {
             </Box>
           </Grid>
           <Grid xs={8}>
-            <TextField sx={FormLayout} placeholder="プライベート、仕事など" />
+            <TextField
+              sx={FormLayout}
+              placeholder="プライベート、仕事など"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </Grid>
           <Button type="submit" sx={SaveButton} onClick={saveCategory}>
             保存
